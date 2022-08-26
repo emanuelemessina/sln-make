@@ -301,16 +301,16 @@ $userMacros
 #---- General ----#
 
 $outDir = $null
-get $ini['outDir'] ([ref]$outDir) "General->OutDir" | Out-Null
+if( get $ini.general['outDir'] ([ref]$outDir) "General->OutDir" ){}
 $intDir = $null
-get $ini['intDir'] ([ref]$intDir) "General->IntDir" | Out-Null
+if( get $ini.general['intDir'] ([ref]$intDir) "General->IntDir" ){}
 
 #---- Build Events ----#
 
 $pre_link_command = $null
-get $ini['pre-link'] ([ref]$pre_link_command) "Pre-Link Command" | Out-Null
+if( get $ini['pre-link'] ([ref]$pre_link_command) "Pre-Link Command" ){}
 $post_build_command = $null
-get $ini['post-build'] ([ref]$post_build_command) "Post-Build Command" | Out-Null
+if( get $ini['post-build'] ([ref]$post_build_command) "Post-Build Command"){}
 
 #########################################################
 
