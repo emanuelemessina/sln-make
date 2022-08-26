@@ -1,0 +1,59 @@
+; EXAMPLE OF AN sln-make.inix FILE
+; This example shows the syntax and all the possible options you can configure
+
+;----------------------------------------------------------------------
+
+; Mandatory root variables
+
+; must match the target in CMake, which in turn is the name of the solution file
+projectName=MyProject
+; solution directory relative to the project root directory
+slnDir= build\win
+
+; The rest is optional
+
+;-----------------------------------------------------------------------
+
+; when setting string parameters use macros (like $(Configuration)) to differentiate debug/release usage, as the same string is set for all configurations
+
+[debug]
+
+; set debugger attach
+attach=true
+; set debugger flavor
+; Possible options:
+; local -> Windows Local Debugger
+flavor=local
+
+[general]
+
+; use trailing slashes for directory paths not to get warnings from visual studio
+
+; General->OutDir
+outDir=$(VST3BundleOutDir)\win-$(PlatformTarget)\
+; General->IntDir
+intDir=$(TargetBuildDir)\intermediate\
+
+[macros]
+
+; automaticall sets the macro ProjectRootDir to this file location
+
+MyMacroExample = $(MSBuildProjectDirectory)\myDir\$(Configuration)\$(PlatformTarget)
+AnotherMacroDerived = $(MyMacroExample)\assets
+MacroUsingProjectRoot = $(ProjectRootDir)\scripts\win
+
+<pre-link> ; pre link batch script block
+
+    :: my batch script for pre-link event
+
+    echo hello pre link
+
+</pre-link>
+
+<post-build> ; post build batch script block
+
+    :: my batch script for post-build event
+
+    echo hello post build
+
+</post-build>
