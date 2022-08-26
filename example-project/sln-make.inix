@@ -30,9 +30,9 @@ flavor=local
 ; use trailing slashes for directory paths not to get warnings from visual studio
 
 ; General->OutDir
-outDir=$(VST3BundleOutDir)\win-$(PlatformTarget)\
+outDir=$(MyMacroExample)\win\
 ; General->IntDir
-intDir=$(TargetBuildDir)\intermediate\
+intDir=$(MyMacroExample)\intermediate\
 
 [macros]
 
