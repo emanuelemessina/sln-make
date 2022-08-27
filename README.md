@@ -53,7 +53,11 @@ Place `sln-make.inix` in the project root directory (which contains source files
 \
 \
 Run `sln-make.ps1 -projectRootDir path/to/project-root-directory`
->you can just run it without specifying a path and it will assume that the project root directory is the current working directory
+>you can just run it without specifying `projectRootDir` and it will assume that the project root directory is the current working directory
+
+<br>
+
+Depending on how you're running the script you may want to keep the console open: use `-keepOpen` .
 
 <br>
 
