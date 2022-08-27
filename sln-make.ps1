@@ -240,6 +240,8 @@ if( -not (get $ini.root['slnDir'] ([ref]$slnDir) "Solution directory")){
     log $tags.error "slnDir not set, aborted."
     end
 }
+# set solution directory to absolute
+$slnDir = Join-Path $projectRootDir $slnDir
 
 # TRY TO DELETE .VS FOLDER
 
@@ -312,11 +314,14 @@ if( get $ini['pre-link'] ([ref]$pre_link_command) "Pre-Link Command" ){}
 $post_build_command = $null
 if( get $ini['post-build'] ([ref]$post_build_command) "Post-Build Command"){}
 
+#---- Custom Build Tool ----#
+
+$customBuildToolCommand = $null
+if( get $ini['custom-build'] ([ref]$customBuildToolCommand) "Custom Build Tool Command" ){}
+
 #########################################################
 
 # set helper variables
-
-$slnDir = Join-Path $projectRootDir $slnDir
 
 $solutionFile = "$($slnDir)\$($projectName).sln"
 
@@ -509,6 +514,16 @@ applyToAllConfs $projectXml.Project.ItemDefinitionGroup { param($itemDefGroup)
     }
     if($post_build_command){
         $itemDefGroup.PostBuildEvent.Command = $post_build_command
+    }
+}
+
+#########################################################
+
+# set custom build tool
+
+applyToAllConfs $projectXml.Project.ItemGroup.CustomBuild.Command { param($command)
+    if($customBuildToolCommand){
+        $command.'#text' = $customBuildToolCommand
     }
 }
 

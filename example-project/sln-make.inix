@@ -57,3 +57,12 @@ MacroUsingProjectRoot = $(ProjectRootDir)\scripts\win
     echo hello post build
 
 </post-build>
+
+<custom-build> ; custom build tool command for CMakeLists.txt
+
+    :: you can call sln-make here (replacing the default lines that you'll find otherwise)
+    :: this way you can regenerate the solution with one click from visual studio (since sln-make in turn calls cmake)
+
+    powershell sln-make -projectRootDir $(ProjectRootDir)
+
+</custom-build>
