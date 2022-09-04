@@ -291,6 +291,9 @@ if( get $ini.debug['attach'] ([ref]$debuggerAttach) "Debugger attach"){
 $debuggerFlavor = $null
 get $ini.debug['flavor'] ([ref]$debuggerFlavor) "Debugger flavor" | Out-Null
 
+$debugCommand = $null;
+get $ini.debug['command'] ([ref]$debugCommand) "Debug command" | Out-Null
+
 #---- User Macros ----#
 
 # automatically set the macro ProjectRootDir
@@ -403,6 +406,10 @@ switch($debuggerFlavor){
         $debug_xml_string += "<DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>" 
         Break 
     }
+}
+
+if($debugCommand){
+    $debug_xml_string += "<LocalDebuggerCommand>$($debugCommand)</LocalDebuggerCommand>"
 }
 
 $debug_xml_string += "</PropertyGroup>"

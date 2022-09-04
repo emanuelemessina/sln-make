@@ -25,6 +25,8 @@ attach=true
 ; local -> Windows Local Debugger
 flavor=local
 
+command=program.exe
+
 [general]
 
 ; use trailing slashes for directory paths not to get warnings from visual studio
