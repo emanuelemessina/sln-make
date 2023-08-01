@@ -61,6 +61,11 @@ Depending on how you're running the script you may want to keep the console open
 
 <br>
 
+`add_to_path.ps1` simply adds the current folder to `PATH`, so you can call `sln-make` from anywhere.
+
+<br>
+
+
 ### Internally
 
 <br>

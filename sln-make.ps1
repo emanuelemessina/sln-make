@@ -17,7 +17,7 @@ param(
     HelpMessage="Project Root Directory where sln-make.inix is located, alongside CMakeLists.txt. If left blank it's assumed to be PWD. Will be available as the solution macro `$(ProjectRootDir).")
     ]
     [string]
-    $projectRootDir = ".",
+    $projectRootDir = (Get-Location).Path,
 
     [Parameter(
     HelpMessage="Keep the console open and wait for key press before exiting.")
